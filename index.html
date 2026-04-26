@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="PolarVSR: A Unified Framework and Benchmark for Continuous Space-Time Polarization Video Reconstruction.">
+  <meta name="keywords" content="PolarVSR, Polarization imaging, Video Super-Resolution, Space-Time Video Super-Resolution">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PolarVSR: Continuous Space-Time Polarization Video Reconstruction</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<header class="hero publication-hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop has-text-centered">
+      <h1 class="title is-1 publication-title">PolarVSR: A Unified Framework and Benchmark for Continuous Space-Time Polarization Video Reconstruction</h1>
+      <div class="publication-authors">
+        <span>Chenggong Li<sup>1,2</sup></span>,
+        <span>Yidong Luo<sup>3,4</sup></span>,
+        <span>Junchao Zhang<sup>1,2,&dagger;</sup></span>,
+        <span>Boxin Shi<sup>5,6</sup></span>,
+        <span>and Degui Yang<sup>1,2,&dagger;</sup></span>
+      </div>
+      <div class="publication-affiliations">
+        <p><sup>1</sup>School of Automation, Central South University</p>
+        <p><sup>2</sup>Hunan Provincial Key Laboratory of Optic-Electronic Intelligent Measurement and Control</p>
+        <p><sup>3</sup>Zhejiang University</p>
+        <p><sup>4</sup>School of Engineering, Westlake University</p>
+        <p><sup>5</sup>State Key Laboratory of Multimedia Information Processing, School of Computer Science, Peking University</p>
+        <p><sup>6</sup>National Engineering Research Center of Visual Technology, School of Computer Science, Peking University</p>
+        <p><sup>&dagger;</sup>Co-corresponding authors</p>
+      </div>
+      <div class="publication-links">
+        <button class="button is-dark is-rounded publication-link-disabled" type="button" disabled>
+          <span class="icon"><i class="fas fa-file-alt"></i></span>
+          <span>arXiv</span>
+          <span class="coming-soon">Coming soon</span>
+        </button>
+        <button class="button is-dark is-rounded publication-link-disabled" type="button" disabled>
+          <span class="icon"><i class="fas fa-code"></i></span>
+          <span>Code</span>
+          <span class="coming-soon">Coming soon</span>
+        </button>
+        <button class="button is-dark is-rounded publication-link-disabled" type="button" disabled>
+          <span class="icon"><i class="fas fa-database"></i></span>
+          <span>Datasets</span>
+          <span class="coming-soon">Coming soon</span>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="section hero-video-section">
+    <div class="container is-max-desktop">
+      <div class="hero-video-frame">
+        <video class="hero-video" autoplay muted loop playsinline controls>
+          <source src="./static/videos/compressed/video3_video4_lq_output_AOP.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="abstract">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Abstract</h2>
+      <div class="content has-text-justified">
+        <p>
+          Polarimetric imaging aims to acquire surface polarization characteristics, such as the
+          Degree of Linear Polarization (DoLP) and the Angle of Polarization (AoP). In mainstream
+          Division-of-Focal-Plane (DoFP) color polarization imaging, reconstructing polarization
+          parameters from captured mosaic arrays remains a challenging inverse problem. Existing
+          DoFP cameras are also limited by hardware bottlenecks and often cannot provide
+          high-frame-rate acquisition, which restricts the use of polarimetric imaging in dynamic
+          video tasks. These limitations motivate the joint enhancement of spatial and temporal
+          resolution.To this end, we propose the first space-time polarization video reconstruction
+          architecture. The proposed method performs unified spatiotemporal modeling of polarization
+          directions and uses a polarization-aware implicit neural representation to achieve
+          continuous and high-fidelity upsampling. By analyzing temporal variations in polarization
+          parameters, we further introduce a flow-guided polarization variation loss to supervise
+          polarization dynamics. In addition, we establish the first large-scale color DoFP
+          polarization video benchmark to support this research direction. Extensive experiments on
+          the proposed benchmark demonstrate the effectiveness of the proposed method. 
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="overview">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Overview</h2>
+      <div class="content has-text-justified">
+        <p>
+          The overall pipeline of the proposed method is shown in the overview figure. Following
+          standard continuous STVSR frameworks, PolarVSR synthesizes a high-resolution frame at
+          arbitrary time from a pair of adjacent mosaic arrays. Unlike standard STVSR, the
+          proposed method jointly models all four polarization directions by concatenating them
+          channel-wise for unified feature processing, allowing the network to learn intrinsic
+          cross-direction dependencies under degradation.
+        </p>
+        <p>
+          The unpolarized intensity is used to derive the inter-frame motion field for accurate
+          motion estimation. Intensity and polarization representations are sampled by the
+          polarization-aware implicit neural representation (PAINR), warped to the target time,
+          refined by the motion-compensated feature refinement (MCFR) block, and decoded to
+          reconstruct the high-resolution color polarization output.
+        </p>
+      </div>
+      <figure class="overview-figure">
+        <img src="./static/images/overview.png" alt="Overview of the proposed PolarVSR framework">
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="benchmark">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title has-text-centered">Benchmark</h2>
+      <div class="content has-text-justified">
+        <p>
+          We introduce PV, the first large-scale color polarization video dataset collected using a
+          FLIR BFS-U3-51S5PC-C camera. PV covers diverse indoor and outdoor scenes. For indoor
+          setups, the camera is mounted on a rigid stand, and the objects are placed on a motorized
+          turntable. The turntable is operated at three speed levels, and the light sources are
+          adjusted to create different illumination conditions. The objects cover a wide range of
+          materials, including polarizers, plastics, and frosted surfaces.
+          For outdoor scenarios, some scenes are recorded using a tripod, such as in a zoo, where
+          the activities of different animals are captured and variations in fur textures produce
+          noticeable polarization differences. We also collect driving sequences using an in-vehicle
+          setup under daytime and nighttime road conditions, which are useful for downstream tasks
+          such as object recognition. The camera operates at 75 FPS. In total, the dataset consists
+          of 65 scenes and 117550 frames, with sequence lengths ranging from 200 to 2000 frames.
+        </p>
+      </div>
+      <figure class="benchmark-figure">
+        <img src="./static/images/polvideo_random_stokes_montage_wide.jpg" alt="Overview of the PV polarization video benchmark">
+      </figure>
+    </div>
+  </section>
+
+  <section class="section" id="results">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title has-text-centered">Results</h2>
+      <div class="result-viewer" id="result-video-1">
+        <h3 class="title is-4 result-title">Video 1 (Space2 Time8)</h3>
+        <div class="result-main-frame">
+          <video class="result-main-video" controls muted loop playsinline>
+            <source src="./static/videos/compressed/video1/lq_S0_video_1.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="result-selector" aria-label="Result method selector">
+          <div class="result-method-row">
+            <span class="result-row-label">S0</span>
+            <button class="result-method is-active" type="button" data-video="./static/videos/compressed/video1/lq_S0_video_1.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/output_S0_video_1.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/videoinr_S0_video_1.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/motif_S0_video_1.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/bf_S0_video_1.mp4">BF-STVSR-12ch</button>
+          </div>
+          <div class="result-method-row">
+            <span class="result-row-label">AoP</span>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/lq_AOP_video_1.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/output_AOP_video_1.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/videoinr_AOP_video_1.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/motif_AOP_video_1.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video1/bf_AOP_video_1.mp4">BF-STVSR-12ch</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="result-viewer" id="result-video-2">
+        <h3 class="title is-4 result-title">Video 2 (Space2 Time8)</h3>
+        <div class="result-main-frame">
+          <video class="result-main-video" controls muted loop playsinline>
+            <source src="./static/videos/compressed/video2/lq_S0_video_2.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="result-selector" aria-label="Result method selector">
+          <div class="result-method-row">
+            <span class="result-row-label">S0</span>
+            <button class="result-method is-active" type="button" data-video="./static/videos/compressed/video2/lq_S0_video_2.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/output_S0_video_2.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/videoinr_S0_video_2.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/motif_S0_video_2.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/bf_S0_video_2.mp4">BF-STVSR-12ch</button>
+          </div>
+          <div class="result-method-row">
+            <span class="result-row-label">AoP</span>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/lq_AOP_video_2.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/output_AOP_video_2.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/videoinr_AOP_video_2.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/motif_AOP_video_2.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video2/bf_AOP_video_2.mp4">BF-STVSR-12ch</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- <div class="result-viewer" id="result-video-3">
+        <h3 class="title is-4 result-title">Video 3</h3>
+        <div class="result-main-frame">
+          <video class="result-main-video" controls muted loop playsinline>
+            <source src="./static/videos/compressed/video3/lq_S0_video_3.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="result-selector" aria-label="Result method selector">
+          <div class="result-method-row">
+            <span class="result-row-label">S0</span>
+            <button class="result-method is-active" type="button" data-video="./static/videos/compressed/video3/lq_S0_video_3.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/output_S0_video_3.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/videoinr_S0_video_3.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/motif_S0_video_3.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/bf_S0_video_3.mp4">BF-STVSR-12ch (CVPR '25)</button>
+          </div>
+          <div class="result-method-row">
+            <span class="result-row-label">AoP</span>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/lq_AOP_video_3.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/output_AOP_video_3.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/videoinr_AOP_video_3.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/motif_AOP_video_3.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video3/bf_AOP_video_3.mp4">BF-STVSR-12ch (CVPR '25)</button>
+          </div>
+        </div>
+      </div> -->
+
+      <div class="result-viewer" id="result-video-3">
+        <h3 class="title is-4 result-title">Video 3 (Space4 Time4)</h3>
+        <div class="result-main-frame">
+          <video class="result-main-video" controls muted loop playsinline>
+            <source src="./static/videos/compressed/video4/lq_S0_video_4.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div class="result-selector" aria-label="Result method selector">
+          <div class="result-method-row">
+            <span class="result-row-label">S0</span>
+            <button class="result-method is-active" type="button" data-video="./static/videos/compressed/video4/lq_S0_video_4.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/output_S0_video_4.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/videoinr_S0_video_4.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/motif_S0_video_4.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/bf_S0_video_4.mp4">BF-STVSR-12ch (CVPR '25)</button>
+          </div>
+          <div class="result-method-row">
+            <span class="result-row-label">AoP</span>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/lq_AOP_video_4.mp4">LQ</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/output_AOP_video_4.mp4">PolarVSR (ours)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/videoinr_AOP_video_4.mp4">VideoINR (CVPR '22)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/motif_AOP_video_4.mp4">MoTIF (ICCV '23)</button>
+            <button class="result-method" type="button" data-video="./static/videos/compressed/video4/bf_AOP_video_4.mp4">BF-STVSR-12ch (CVPR '25)</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section-light" id="quantitative-results">
+    <div class="container is-widescreen">
+      <h2 class="title is-3 section-title has-text-centered">Quantitative Results</h2>
+      <div class="table-tabs" role="tablist" aria-label="Quantitative result tables">
+        <button class="table-tab is-active" type="button" data-table="table-1">Table 1</button>
+        <button class="table-tab" type="button" data-table="table-2">Table 2</button>
+        <button class="table-tab" type="button" data-table="table-3">Table 3</button>
+      </div>
+
+      <article class="paper-table-panel is-active" id="table-1">
+        <h3 class="table-caption">Table 1. Demosaicking (2x) and 2x frame interpolation.</h3>
+        <div class="table-scroll">
+          <table class="paper-table">
+            <thead>
+              <tr>
+                <th>VFI Method</th>
+                <th>SR Method</th>
+                <th>PSNR<sub>I</sub> ↑</th>
+                <th>PSNR<sub>p</sub> ↑</th>
+                <th>SSIM<sub>I</sub> ↑</th>
+                <th>SSIM<sub>p</sub> ↑</th>
+                <th>MAE ↓</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>SuperSloMo</td><td>ATD</td><td>27.322</td><td>23.073</td><td>0.847</td><td>0.657</td><td>14.626</td></tr>
+              <tr><td>SuperSloMo</td><td>PIDSR</td><td>33.977</td><td>32.021</td><td>0.939</td><td>0.818</td><td>11.843</td></tr>
+              <tr><td>SuperSloMo</td><td>PUGDiff</td><td>28.039</td><td>30.299</td><td>0.862</td><td>0.781</td><td>8.784</td></tr>
+              <tr><td>VFIT</td><td>ATD</td><td>28.983</td><td>22.390</td><td>0.875</td><td>0.658</td><td>14.693</td></tr>
+              <tr><td>VFIT</td><td>PIDSR</td><td><span class="second-best">34.052</span></td><td><span class="second-best">32.343</span></td><td><span class="second-best">0.940</span></td><td><span class="second-best">0.829</span></td><td>11.443</td></tr>
+              <tr><td>VFIT</td><td>PUGDiff</td><td>30.225</td><td>31.043</td><td>0.897</td><td>0.800</td><td>8.907</td></tr>
+              <tr><td>SCUBA</td><td>ATD</td><td>28.941</td><td>22.585</td><td>0.875</td><td>0.657</td><td>15.106</td></tr>
+              <tr><td>SCUBA</td><td>PIDSR</td><td>30.471</td><td>31.289</td><td>0.894</td><td>0.796</td><td>12.769</td></tr>
+              <tr><td>SCUBA</td><td>PUGDiff</td><td>30.212</td><td>30.876</td><td>0.896</td><td>0.791</td><td>9.995</td></tr>
+              <tr><td colspan="2">VideoINR</td><td>29.388</td><td>22.218</td><td>0.886</td><td>0.657</td><td>11.255</td></tr>
+              <tr><td colspan="2">VideoINR-12ch</td><td>32.423</td><td>29.732</td><td>0.924</td><td>0.771</td><td>8.583</td></tr>
+              <tr><td colspan="2">MoTIF</td><td>29.687</td><td>22.519</td><td>0.892</td><td>0.660</td><td>11.415</td></tr>
+              <tr><td colspan="2">MoTIF-12ch</td><td>32.292</td><td>29.859</td><td>0.933</td><td>0.788</td><td>8.558</td></tr>
+              <tr><td colspan="2">BF-STVSR</td><td>29.472</td><td>22.214</td><td>0.890</td><td>0.656</td><td>11.481</td></tr>
+              <tr><td colspan="2">BF-STVSR-12ch</td><td>32.654</td><td>29.763</td><td>0.928</td><td>0.776</td><td><span class="second-best">8.437</span></td></tr>
+              <tr class="ours-row"><td colspan="2">Ours</td><td>34.631</td><td>33.310</td><td>0.944</td><td>0.854</td><td>5.922</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="paper-table-panel" id="table-2" hidden>
+        <h3 class="table-caption">Table 2. Super-resolution under different spatial-temporal settings. Entries are PSNR<sub>I</sub> / PSNR<sub>p</sub> / MAE.</h3>
+        <div class="table-scroll">
+          <table class="paper-table">
+            <thead><tr><th>Method</th><th>Spatial Scale</th><th>Time x2</th><th>Time x4</th><th>Time x8</th></tr></thead>
+            <tbody>
+              <tr><td>SuperSloMo+PIDSR</td><td>x4</td><td>21.469 / 24.755 / 16.034</td><td>--</td><td>--</td></tr>
+              <tr><td>SuperSloMo+PIDSR</td><td>x8</td><td>20.044 / 21.681 / 18.005</td><td>--</td><td>--</td></tr>
+              <tr><td>VFIT+PIDSR</td><td>x4</td><td>21.642 / 24.117 / 15.639</td><td>--</td><td>--</td></tr>
+              <tr><td>VFIT+PIDSR</td><td>x8</td><td>20.082 / 21.268 / 17.821</td><td>--</td><td>--</td></tr>
+              <tr><td>SCUBA+PIDSR</td><td>x4</td><td>21.695 / 24.240 / 15.615</td><td>--</td><td>--</td></tr>
+              <tr><td>SCUBA+PIDSR</td><td>x8</td><td>20.101 / 21.345 / 17.784</td><td>--</td><td>--</td></tr>
+              <tr><td>ZoomingSlowMo</td><td>x4</td><td>25.264 / 19.284 / 17.663</td><td>--</td><td>--</td></tr>
+              <tr><td>TMNet</td><td>x4</td><td>25.279 / 19.456 / 17.058</td><td>24.916 / 19.463 / 17.190</td><td>24.022 / 19.357 / 17.653</td></tr>
+              <tr><td>VideoINR</td><td>x4</td><td>25.557 / 19.195 / 14.659</td><td>25.256 / 19.330 / 14.636</td><td>24.407 / 19.488 / 14.955</td></tr>
+              <tr><td>VideoINR</td><td>x8</td><td>22.162 / 17.053 / 18.347</td><td>22.096 / 17.211 / 18.187</td><td>21.820 / 17.324 / 18.304</td></tr>
+              <tr><td>VideoINR-12ch</td><td>x4</td><td>27.161 / 27.986 / 10.297</td><td>26.621 / 27.880 / 10.424</td><td>25.367 / 27.523 / 10.768</td></tr>
+              <tr><td>VideoINR-12ch</td><td>x8</td><td>23.353 / 26.184 / 12.065</td><td>23.223 / 26.190 / <span class="second-best">12.015</span></td><td>22.716 / 26.090 / 12.133</td></tr>
+              <tr><td>MoTIF</td><td>x4</td><td>25.651 / 19.438 / 14.472</td><td>25.346 / 19.537 / 14.444</td><td>24.491 / 19.546 / 14.741</td></tr>
+              <tr><td>MoTIF</td><td>x8</td><td>22.120 / 16.955 / 18.203</td><td>22.039 / 17.135 / 18.049</td><td>21.737 / 17.211 / 18.178</td></tr>
+              <tr><td>MoTIF-12ch</td><td>x4</td><td><span class="second-best">28.165</span> / <span class="second-best">28.429</span> / 10.257</td><td><span class="second-best">27.401</span> / <span class="second-best">28.332</span> / 10.343</td><td><span class="second-best">25.731</span> / <span class="second-best">28.003</span> / 10.653</td></tr>
+              <tr><td>MoTIF-12ch</td><td>x8</td><td><span class="second-best">24.059</span> / <span class="second-best">26.553</span> / 12.410</td><td>23.565 / 26.184 / 12.015</td><td>22.905 / <span class="second-best">26.416</span> / 12.533</td></tr>
+              <tr><td>BF-STVSR</td><td>x4</td><td>25.528 / 19.382 / 14.396</td><td>25.263 / 19.480 / 14.373</td><td>24.488 / 19.511 / 14.659</td></tr>
+              <tr><td>BF-STVSR</td><td>x8</td><td>22.105 / 16.952 / 18.118</td><td>22.054 / 17.099 / 17.973</td><td>21.799 / 17.160 / 18.089</td></tr>
+              <tr><td>BF-STVSR-12ch</td><td>x4</td><td>27.698 / 28.068 / <span class="second-best">10.236</span></td><td>27.083 / 27.970 / <span class="second-best">10.319</span></td><td>25.703 / 27.661 / <span class="second-best">10.562</span></td></tr>
+              <tr><td>BF-STVSR-12ch</td><td>x8</td><td>23.728 / 26.193 / <span class="second-best">12.060</span></td><td><span class="second-best">23.688</span> / <span class="second-best">26.551</span> / 12.395</td><td><span class="second-best">22.979</span> / 26.091 / <span class="second-best">12.100</span></td></tr>
+              <tr class="ours-row"><td>Ours</td><td>x4</td><td>30.104 / 30.997 / 7.285</td><td>29.084 / 30.753 / 7.415</td><td>27.054 / 30.098 / 7.800</td></tr>
+              <tr class="ours-row"><td>Ours</td><td>x8</td><td>25.086 / 28.497 / 9.249</td><td>24.668 / 28.438 / 9.304</td><td>23.770 / 28.200 / 9.492</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+
+      <article class="paper-table-panel" id="table-3" hidden>
+        <h3 class="table-caption">Table 3. Out-of-distribution super-resolution. Entries are PSNR<sub>I</sub> / PSNR<sub>p</sub> / MAE.</h3>
+        <div class="table-scroll">
+          <table class="paper-table">
+            <thead><tr><th>Method</th><th>Spatial Scale</th><th>Time x3</th><th>Time x6</th><th>Time x12</th></tr></thead>
+            <tbody>
+              <tr><td>VideoINR</td><td>x6</td><td>23.117 / 17.847 / 17.029</td><td>22.916 / 17.979 / 17.015</td><td>22.329 / 18.149 / 17.272</td></tr>
+              <tr><td>VideoINR</td><td>x10</td><td>20.960 / 16.284 / 19.926</td><td>20.885 / 16.422 / 19.842</td><td>20.643 / 16.522 / 19.976</td></tr>
+              <tr><td>VideoINR-12ch</td><td>x6</td><td>24.588 / 26.874 / 11.513</td><td>24.194 / 26.801 / 11.592</td><td>23.238 / 26.504 / 11.894</td></tr>
+              <tr><td>VideoINR-12ch</td><td>x10</td><td>21.924 / 25.515 / 13.264</td><td>21.788 / 25.516 / 13.231</td><td>21.347 / 25.426 / 13.457</td></tr>
+              <tr><td>MoTIF</td><td>x6</td><td>23.077 / 17.869 / 16.902</td><td>22.858 / 17.970 / 16.890</td><td>22.208 / 18.013 / 17.172</td></tr>
+              <tr><td>MoTIF</td><td>x10</td><td>20.878 / 16.192 / 19.691</td><td>20.792 / 16.317 / 19.630</td><td>20.522 / 16.375 / 19.786</td></tr>
+              <tr><td>MoTIF-12ch</td><td>x6</td><td><span class="second-best">25.214</span> / <span class="second-best">27.229</span> / 11.696</td><td><span class="second-best">24.594</span> / <span class="second-best">27.153</span> / 11.770</td><td>23.278 / <span class="second-best">26.886</span> / 12.031</td></tr>
+              <tr><td>MoTIF-12ch</td><td>x10</td><td><span class="second-best">22.501</span> / <span class="second-best">25.948</span> / 13.616</td><td><span class="second-best">22.134</span> / <span class="second-best">25.935</span> / 13.646</td><td>21.395 / <span class="second-best">25.841</span> / 13.800</td></tr>
+              <tr><td>BF-STVSR</td><td>x6</td><td>23.058 / 17.801 / 16.843</td><td>22.878 / 17.884 / 16.836</td><td>22.348 / 17.963 / 17.047</td></tr>
+              <tr><td>BF-STVSR</td><td>x10</td><td>20.947 / 16.157 / 19.576</td><td>20.881 / 16.269 / 19.521</td><td>20.655 / 16.322 / 19.633</td></tr>
+              <tr><td>BF-STVSR-12ch</td><td>x6</td><td>24.964 / 26.894 / <span class="second-best">11.509</span></td><td>24.493 / 26.833 / <span class="second-best">11.561</span></td><td><span class="second-best">23.456</span> / 26.586 / <span class="second-best">11.750</span></td></tr>
+              <tr><td>BF-STVSR-12ch</td><td>x10</td><td>22.280 / 25.570 / <span class="second-best">13.148</span></td><td>22.110 / 25.567 / <span class="second-best">13.112</span></td><td><span class="second-best">21.598</span> / 25.507 / <span class="second-best">13.265</span></td></tr>
+              <tr class="ours-row"><td>Ours</td><td>x6</td><td>25.924 / 28.847 / 9.559</td><td>25.262 / 28.702 / 9.632</td><td>23.874 / 28.264 / 9.893</td></tr>
+              <tr class="ours-row"><td>Ours</td><td>x10</td><td>22.800 / 27.141 / 11.085</td><td>22.449 / 27.091 / 11.128</td><td>21.722 / 26.911 / 11.298</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="computational-efficiency">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 section-title">Computational Efficiency</h2>
+      <div class="content has-text-justified">
+        <p>
+          Computational complexity is evaluated on 200x200 mosaic arrays using an NVIDIA RTX 4090
+          GPU under demosaicking and 2x frame interpolation.
+        </p>
+      </div>
+      <div class="table-container">
+        <table class="paper-table efficiency-table">
+          <thead>
+            <tr><th>Method</th><th>Params (M)</th><th>FLOPs (T)</th><th>Time (ms)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>SCUBA+ATD</td><td>17.364+0.753</td><td>0.403</td><td>548.92</td></tr>
+            <tr><td>SCUBA+PIDSR</td><td>17.364+7.647</td><td><strong>0.195</strong></td><td>397.26</td></tr>
+            <tr><td>SCUBA+PUGDiff</td><td>17.364+899.190</td><td>26.146</td><td>452.99</td></tr>
+            <tr><td>VFIT+ATD</td><td>29.054+0.753</td><td>0.532</td><td>300.48</td></tr>
+            <tr><td>VFIT+PIDSR</td><td>29.054+7.647</td><td>0.324</td><td>156.72</td></tr>
+            <tr><td>VFIT+PUGDiff</td><td>29.054+899.190</td><td>26.175</td><td>267.35</td></tr>
+            <tr><td>SuperSloMo+ATD</td><td>39.610+0.753</td><td>0.522</td><td>280.88</td></tr>
+            <tr><td>SuperSloMo+PIDSR</td><td>39.610+7.647</td><td><span class="second-best">0.313</span></td><td><span class="second-best">138.01</span></td></tr>
+            <tr><td>SuperSloMo+PUGDiff</td><td>39.610+899.190</td><td>26.170</td><td>284.90</td></tr>
+            <tr><td>ZoomingSlowMo</td><td><strong>10.522</strong></td><td>2.318</td><td>299.40</td></tr>
+            <tr><td>TMNet</td><td>11.618</td><td>3.343</td><td>447.71</td></tr>
+            <tr><td>VideoINR</td><td><span class="second-best">10.732</span></td><td>2.126</td><td>434.68</td></tr>
+            <tr><td>MoTIF</td><td>13.195</td><td>2.227</td><td>419.24</td></tr>
+            <tr><td>BF-STVSR</td><td>12.906</td><td>2.141</td><td>339.16</td></tr>
+            <tr class="ours-row"><td>Ours</td><td>17.684</td><td>1.228</td><td>103.86</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- <section class="section section-light" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 section-title">BibTeX</h2>
+      <pre><code>@article{polvsr2026,
+  author  = {Author One and Author Two and Author Three},
+  title   = {PolVSR},
+  journal = {Conference or Journal},
+  year    = {2026},
+}</code></pre>
+    </div>
+  </section> -->
+</main>
+
+<footer class="footer page-footer">
+  <div class="container is-max-desktop has-text-centered">
+    <p>This page was adapted from <a href="https://v3vsr.github.io/">V3</a>.</p>
+  </div>
+</footer>
+
+</body>
+</html>
