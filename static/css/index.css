@@ -146,6 +146,36 @@ pre {
   margin: 1.5rem 0 0;
 }
 
+.benchmark-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+  margin: 1.25rem 0 0;
+}
+
+.benchmark-tab {
+  background: #ffffff;
+  border: 1px solid #b8c2cc;
+  border-radius: 999px;
+  color: #243b53;
+  cursor: pointer;
+  font: inherit;
+  min-height: 38px;
+  padding: 0 15px;
+}
+
+.benchmark-tab:hover,
+.benchmark-tab.is-active {
+  background: #1f2933;
+  border-color: #1f2933;
+  color: #ffffff;
+}
+
+.benchmark-panel[hidden] {
+  display: none;
+}
+
 .benchmark-figure img {
   background: #ffffff;
   border: 1px solid #d8dee6;
