@@ -31,8 +31,21 @@ function initializeTableTabs() {
   });
 }
 
+function initializeBenchmarkTabs() {
+  $(".benchmark-tab").on("click", function() {
+    var targetId = $(this).data("benchmark");
+
+    $(".benchmark-tab").removeClass("is-active");
+    $(this).addClass("is-active");
+
+    $(".benchmark-panel").removeClass("is-active").attr("hidden", true);
+    $("#" + targetId).addClass("is-active").removeAttr("hidden");
+  });
+}
+
 $(document).ready(function() {
   initializeResultViewer();
+  initializeBenchmarkTabs();
   initializeTableTabs();
 
   if (typeof bulmaSlider !== "undefined") {
