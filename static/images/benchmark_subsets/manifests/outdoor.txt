@@ -1,0 +1,12 @@
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_003.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_004.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_005.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_006.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_007.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_008.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_009.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_010.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_011.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_012.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_013.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_animal_fur_014.png

@@ -1,0 +1,12 @@
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_001.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_002.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_003.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_004.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_005.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_006.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_007.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_metal_008.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_bicycles_metal_001.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_car_metalglass_001.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_car_metalglass_002.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\outdoor_day_car_metalmetaclass_015.png

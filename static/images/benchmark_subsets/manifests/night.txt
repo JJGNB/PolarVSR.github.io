@@ -1,0 +1,12 @@
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_004.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_006.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_012.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_013.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_014.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_017.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_018.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_019.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_020.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_car_metalglass_021.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_carhumanbicycles_metalglass_009.png
+I:\Dataset\PolVideo\polvideo_random_stokes1\outdoor_night_carhumanbicycles_metalglass_015.png

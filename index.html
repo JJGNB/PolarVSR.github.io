@@ -140,9 +140,60 @@
           of 65 scenes and 117550 frames, with sequence lengths ranging from 200 to 2000 frames.
         </p>
       </div>
-      <figure class="benchmark-figure">
-        <img src="./static/images/polvideo_random_stokes_montage_wide.jpg" alt="Overview of the PV polarization video benchmark">
-      </figure>
+      <div class="benchmark-tabs" role="tablist" aria-label="Benchmark subsets">
+        <button class="benchmark-tab is-active" type="button" data-benchmark="benchmark-overview">Overview</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-indoor">Indoor</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-outdoor">Outdoor</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-night">Night</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-animal">Animal</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-car">Car</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-human">Human</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-glass">Glass</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-metal">Metal</button>
+        <button class="benchmark-tab" type="button" data-benchmark="benchmark-plastic">Plastic</button>
+      </div>
+      <div class="benchmark-panels">
+        <figure class="benchmark-figure benchmark-panel is-active" id="benchmark-overview">
+          <img src="./static/images/polvideo_random_stokes_montage_wide.jpg" alt="Overview of the PV polarization video benchmark">
+          <figcaption>Overview of representative PV samples across diverse scenes and materials.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-indoor" hidden>
+          <img src="./static/images/benchmark_subsets/subset_indoor.jpg" alt="Indoor subset of the PV benchmark">
+          <figcaption>Indoor subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-outdoor" hidden>
+          <img src="./static/images/benchmark_subsets/subset_outdoor.jpg" alt="Outdoor road subset of the PV benchmark">
+          <figcaption>Outdoor subset focusing on road and vehicle scenes.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-animal" hidden>
+          <img src="./static/images/benchmark_subsets/subset_animal.jpg" alt="Animal subset of the PV benchmark">
+          <figcaption>Animal subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-night" hidden>
+          <img src="./static/images/benchmark_subsets/subset_night.jpg" alt="Nighttime subset of the PV benchmark">
+          <figcaption>Nighttime subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-car" hidden>
+          <img src="./static/images/benchmark_subsets/subset_car.jpg" alt="Car subset of the PV benchmark">
+          <figcaption>Car subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-human" hidden>
+          <img src="./static/images/benchmark_subsets/subset_human.jpg" alt="Human subset of the PV benchmark">
+          <figcaption>Human subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-glass" hidden>
+          <img src="./static/images/benchmark_subsets/subset_glass.jpg" alt="Glass subset of the PV benchmark">
+          <figcaption>Glass subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-metal" hidden>
+          <img src="./static/images/benchmark_subsets/subset_metal.jpg" alt="Metal subset of the PV benchmark">
+          <figcaption>Metal subset.</figcaption>
+        </figure>
+        <figure class="benchmark-figure benchmark-panel" id="benchmark-plastic" hidden>
+          <img src="./static/images/benchmark_subsets/subset_plastic.jpg" alt="Plastic subset of the PV benchmark">
+          <figcaption>Plastic subset.</figcaption>
+        </figure>
+      </div>
     </div>
   </section>
 
@@ -166,7 +217,7 @@
             <button class="result-method" type="button" data-video="./static/videos/compressed/video1/bf_S0_video_1.mp4">BF-STVSR-12ch (CVPR '25)</button>
           </div>
           <div class="result-method-row">
-            <span class="result-row-label">AoP</span>
+            <span class="result-row-label">DoLP-AoP</span>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video1/lq_AOP_video_1.mp4">LQ</button>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video1/output_AOP_video_1.mp4">PolarVSR (ours)</button>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video1/videoinr_AOP_video_1.mp4">VideoINR (CVPR '22)</button>
@@ -193,7 +244,7 @@
             <button class="result-method" type="button" data-video="./static/videos/compressed/video2/bf_S0_video_2.mp4">BF-STVSR-12ch (CVPR '25)</button>
           </div>
           <div class="result-method-row">
-            <span class="result-row-label">AoP</span>
+            <span class="result-row-label">DoLP-AoP</span>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video2/lq_AOP_video_2.mp4">LQ</button>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video2/output_AOP_video_2.mp4">PolarVSR (ours)</button>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video2/videoinr_AOP_video_2.mp4">VideoINR (CVPR '22)</button>
@@ -247,7 +298,7 @@
             <button class="result-method" type="button" data-video="./static/videos/compressed/video4/bf_S0_video_4.mp4">BF-STVSR-12ch (CVPR '25)</button>
           </div>
           <div class="result-method-row">
-            <span class="result-row-label">AoP</span>
+            <span class="result-row-label">DoLP-AoP</span>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video4/lq_AOP_video_4.mp4">LQ</button>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video4/output_AOP_video_4.mp4">PolarVSR (ours)</button>
             <button class="result-method" type="button" data-video="./static/videos/compressed/video4/videoinr_AOP_video_4.mp4">VideoINR (CVPR '22)</button>

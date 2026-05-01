@@ -1,0 +1,12 @@
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_ceramic_001.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_ceramic_002.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_ceramic_003.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_matte_004.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_matte_005.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_matte_006.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_Plastic_013.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_Plastic_014.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_Plastic_015.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_Plastic_016.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_Plastic_017.png
+I:\Dataset\PolVideo\polvideo_random_stokes2\indoor_day_Figurine_Plastic_018.png
