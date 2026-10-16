@@ -65,6 +65,11 @@ pre {
   opacity: 0.72;
 }
 
+.publication-release-note {
+  color: #52616b;
+  font-size: 0.95rem;
+  margin-top: 0.85rem;
+}
 .publication-link-disabled .coming-soon {
   border-left: 1px solid rgba(255, 255, 255, 0.35);
   font-size: 0.78rem;
